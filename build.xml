@@ -11,7 +11,7 @@
     <property name="ivy.jar" value="ivy-${ivy.version}.jar"/>
     <property name="ivy.dir" value="${build}/.ivy"/>
     <property name="ivy.lib" value="${ivy.dir}/lib"/>
-    
+
     <path id="ivy.classpath">
         <fileset dir="${ivy.lib}" includes="*.jar"/>
     </path>
@@ -35,18 +35,18 @@
     </path>
 
     <available file="${ivy.lib}/${ivy.jar}" property="ivy.exists"/>
-    
+
     <target name="bootstrap" description="Install ivy" unless="ivy.exists">
         <mkdir dir="${ivy.lib}"/>
         <get dest="${ivy.lib}/${ivy.jar}" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/${ivy.version}/${ivy.jar}"/>
     </target>
-    
+
     <target name="resolve" description="Use ivy to resolve classpaths" depends="bootstrap">
         <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.classpath"/>
         <ivy:resolve xmlns:ivy="antlib:org.apache.ivy.ant"/>
-        
+
         <ivy:report xmlns:ivy="antlib:org.apache.ivy.ant" todir="${build}/ivy/reports" graph='false' xml='false'/>
-        
+
         <ivy:cachepath xmlns:ivy="antlib:org.apache.ivy.ant" pathid="ivy.deps.path"/>
     </target>
 
@@ -92,6 +92,7 @@
                 <include name="templates/**"/>
                 <include name="resources/**"/>
                 <exclude name=".git*"/>
+                <exclude name=".travis.yml"/>
                 <exclude name="build.*"/>
                 <exclude name="src/**"/>
                 <exclude name="data/**"/>

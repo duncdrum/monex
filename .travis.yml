@@ -34,6 +34,11 @@ before_install:
   # exist needs time
   - sleep 30
   - docker ps
+  - echo "Don\'t shoot the messenger"
+  - docker cp exist-ci:exist/*.jar $HOME/exist-ci
+  - docker cp exist-ci:exist/lib/core/*.jar $HOME/exist-ci/exist-ci/lib/core
+  - docker cp exist-ci:exist/lib/optional/*.jar $HOME/exist-ci/lib/optional
+  - docker cp exist-ci:exist/tools/jetty/lib/*.jar $HOME/exist-ci/tools/jetty/lib
 
 install:
   - ant

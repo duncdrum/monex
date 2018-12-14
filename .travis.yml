@@ -30,12 +30,8 @@ jobs:
 before_install:
   - docker pull $img
   - docker create  --name exist-ci -p 8080:8080 $img
-  # - echo "Don\'t shoot the messenger"
-  # - echo $HOME
-  # - docker cp exist-ci:exist/exist.jar ./exist-tmp/exist.jar
-  # - docker cp exist-ci:exist/lib/core/*.jar $HOME/exist-ci/exist-ci/lib/core
-  # - docker cp exist-ci:exist/lib/optional/*.jar $HOME/exist-ci/lib/optional
-  # - docker cp exist-ci:exist/tools/jetty/lib/jetty-server-9.4.10.v20180503.jar ./exist-tmp/tools/jetty/lib/jetty-server-9.4.10.v20180503.jar
+  - echo "Don\'t shoot the messenger"
+  - docker cp exist-ci:exist/exist.jar ./exist-tmp/exist.jar
   - docker start exist-ci
   # exist needs time
   - sleep 30

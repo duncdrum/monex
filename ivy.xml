@@ -5,6 +5,6 @@
         <dependency org="org.eclipse.jetty" name="jetty-server" rev="9.4.8.v20171121"/>
         <dependency org="org.eclipse.jetty" name="jetty-util-ajax" rev="9.4.8.v20171121"/>
         <dependency org="org.eclipse.jetty.websocket" name="websocket-servlet" rev="9.4.8.v20171121"/>
-        <dependency org="org.exist-db" name="exist-core" rev="4.0.0"/>
+        <dependency org="org.exist-db.thirdparty.org.xmldb" name="xmldb-api" rev="1.1-patched"/>
     </dependencies>
 </ivy-module>

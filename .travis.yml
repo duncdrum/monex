@@ -30,26 +30,20 @@ jobs:
 before_install:
   - docker pull $img
   - docker create  --name exist-ci -p 8080:8080 $img
-  - echo "Don\'t shoot the messenger"
-  - echo $HOME
-  - docker cp exist-ci:exist/exist.jar ./exist-tmp/exist.jar
-  # - docker cp exist-ci:exist/lib/core/*.jar $HOME/exist-ci/exist-ci/lib/core
-  # - docker cp exist-ci:exist/lib/optional/*.jar $HOME/exist-ci/lib/optional
-  - docker cp exist-ci:exist/tools/jetty/lib/jetty-server-9.4.10.v20180503.jar ./exist-tmp/tools/jetty/lib/jetty-server-9.4.10.v20180503.jar
   - docker start exist-ci
   # exist needs time
   - sleep 30
   - docker ps
 
 install:
-  - ant
+  - mvn clean package
 
 
 before_script:
   # uninstall pre-installed eXide
   - docker exec exist-ci java -jar start.jar client --no-gui --xpath "repo:undeploy('http://exist-db.org/apps/monex'), repo:remove('http://exist-db.org/apps/monex')"
   # upload new version with fake name
-  - curl -T ./build/eXide-*.xar http://admin:@localhost:8080/exist/rest/db/tmp/monex-ci.xar
+  - curl -T ./target/monex-*.xar http://admin:@localhost:8080/exist/rest/db/tmp/monex-ci.xar
   # install new version
   - docker exec exist-ci java -jar start.jar client --no-gui --xpath "repo:install-and-deploy-from-db('/db/tmp/monex-ci.xar')"
   - docker restart exist-ci

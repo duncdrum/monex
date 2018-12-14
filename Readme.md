@@ -1,6 +1,6 @@
 # Monex (Monitoring for eXist)
 
-![Image](resources/img/screenshot.png?raw=true)
+![Image](src/main/xar-resources/resources/img/screenshot.png?raw=true)
 
 An application for monitoring, profiling and inspecting a running eXist-db instance.
 
@@ -65,27 +65,18 @@ In the Monex Remote Monitoring tab click "Run" to start all remote monitoring jo
 
 Building
 --------
+* Requirements:
+-   Java 8,
+-   Apache Maven 3.3+,
+-   Git
+
 If you wish to build Monex from source code you should follow these steps:
 
 1. Clone it from *eXist-db* (or from your own fork) `git clone https://github.com/eXist-db/monex.git`.
 
-2. Ensure you have Apache Ant installed and available:
-```
-$ ant -version
-Apache Ant(TM) version 1.9.4 compiled on April 29 2014
-```
-
-3. Ensure that you have JDK 8 or newer installed and available:
-```
-$ javac -version
-javac 1.8.0_40
+2. Compile and build an EXPath package by running:
+```bash
+$ mvn package
 ```
 
-4. Copy `build.properties` to `local.build.properties`.
-
-5. Set the path to your eXist installation as the property `exist.dir` in  `local.build.properties`:
-```
-exist.dir=/opt/exist
-```
-
-6. Compile and build an EXPath package by running `ant xar`. The resultant XAR will be in the `build/` folder.
+There will be a `.xar` file in the `target/` sub-folder.

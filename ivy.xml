@@ -1,6 +1,10 @@
 <ivy-module version="2.0">
     <info organisation="com.github.exist-db" module="monex"/>
     <dependencies>
-        <dependency org="org.slf4j" name="slf4j-api" rev="1.7.10"/>
+        <dependency org="org.slf4j" name="slf4j-api" rev="1.7.25"/>
+        <dependency org="org.eclipse.jetty" name="jetty-server" rev="9.4.8.v20171121"/>
+        <dependency org="org.eclipse.jetty" name="jetty-util-ajax" rev="9.4.8.v20171121"/>
+        <dependency org="org.eclipse.jetty.websocket" name="websocket-servlet" rev="9.4.8.v20171121"/>
+        <dependency org="org.exist-db" name="exist-core" rev="4.0.0"/>
     </dependencies>
 </ivy-module>

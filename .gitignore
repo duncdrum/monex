@@ -7,3 +7,4 @@ expath-pkg.xml
 local.build.properties
 exist-tmp/*.jar
 .notes
+target/

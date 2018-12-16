@@ -40,7 +40,7 @@ install:
 
 
 before_script:
-  # uninstall pre-installed eXide
+  # uninstall pre-installed monex
   - docker exec exist-ci java -jar start.jar client --no-gui --xpath "repo:undeploy('http://exist-db.org/apps/monex'), repo:remove('http://exist-db.org/apps/monex')"
   # upload new version with fake name
   - curl -T ./target/monex-*.xar http://admin:@localhost:8080/exist/rest/db/tmp/monex-ci.xar

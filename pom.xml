@@ -10,9 +10,12 @@
     <relativePath/>
   </parent>
 
+  <!-- FIxme: grouid is in line with old app -->
   <groupId>org.exist</groupId>
   <artifactId>monex</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+
+  <!-- <modules> <module>module1</module> <module>module2</module> </modules> -->
 
   <name>Monex</name>
   <description>Monitoring and Profiling for eXist (Monex)</description>
@@ -47,7 +50,9 @@
     <project.build.source>1.8</project.build.source>
     <project.build.target>1.8</project.build.target>
 
+    <!-- TODO: Find a way to dynamically get jetty version from exist version -->
     <exist.version>4.0.0</exist.version>
+    <!-- TODO: witch to javax.websocket.server API -->
     <jetty.version>9.4.8.v20171121</jetty.version>
 
     <!-- used in the EXPath Package Descriptor -->
@@ -71,25 +76,25 @@
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.eclipse.maven/org.eclipse.jetty.util -->
     <dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util</artifactId>
-    <version>${jetty.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util-ajax</artifactId>
-    <version>${jetty.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-api</artifactId>
-    <version>${jetty.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.eclipse.jetty.websocket</groupId>
-    <artifactId>websocket-servlet</artifactId>
-    <version>${jetty.version}</version>
-</dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-util</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-util-ajax</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty.websocket</groupId>
+      <artifactId>websocket-api</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty.websocket</groupId>
+      <artifactId>websocket-servlet</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>

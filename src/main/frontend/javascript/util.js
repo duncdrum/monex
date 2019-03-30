@@ -1,11 +1,3 @@
-/*!
- * monex v0.9.18
- * Monitoring Application for eXist-db
- * (c) 2019 
- * LGPL-2.1-only License
- * git+https://github.com/eXist-db/monex.git
- */
-
 var JMX = {};
 
 JMX.util = (function() {

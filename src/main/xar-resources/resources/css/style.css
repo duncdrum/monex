@@ -1,130 +1,166 @@
+/*!
+ * monex v0.9.18
+ * Monitoring Application for eXist-db
+ * (c) 2019 
+ * LGPL-2.1-only License
+ * git+https://github.com/eXist-db/monex.git
+ */
+
 /* Application styles could go here */
+/* line 2, src/main/frontend/css/style.css */
 .profiling .nav {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
+/* line 6, src/main/frontend/css/style.css */
 body > .header .logo {
-    /* background-color: #FFFFFF; */
-    text-align: left;
+  /* background-color: #FFFFFF; */
+  text-align: left;
 }
 
-#console tr>td:nth-child(1) {
-    width: 10%;
+/* line 11, src/main/frontend/css/style.css */
+#console tr > td:nth-child(1) {
+  width: 10%;
 }
 
-#console tr>td:nth-child(2) {
-    width: 10%;
+/* line 15, src/main/frontend/css/style.css */
+#console tr > td:nth-child(2) {
+  width: 10%;
 }
 
-#console tr>td:nth-child(3) {
-    width: 10%;
+/* line 19, src/main/frontend/css/style.css */
+#console tr > td:nth-child(3) {
+  width: 10%;
 }
 
-#console tr>td:nth-child(4), #console tr>th:nth-child(4) {
-    width: 65%;
+/* line 23, src/main/frontend/css/style.css */
+#console tr > td:nth-child(4), #console tr > th:nth-child(4) {
+  width: 65%;
 }
 
-#console tr>td:nth-child(5), #console tr>th:nth-child(5) {
-    width: 5%;
+/* line 27, src/main/frontend/css/style.css */
+#console tr > td:nth-child(5), #console tr > th:nth-child(5) {
+  width: 5%;
 }
 
+/* line 31, src/main/frontend/css/style.css */
 #console .source {
-    cursor: pointer;
+  cursor: pointer;
 }
 
+/* line 35, src/main/frontend/css/style.css */
 #visualizer .node {
-    border: solid 1px Ghostwhite;
-    font: 10px;
-    line-height: 16px;
-    overflow: hidden;
-    position: absolute;
-    text-indent: 2px;
-    color:Ghostwhite;
+  border: solid 1px Ghostwhite;
+  font: 10px;
+  line-height: 16px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+  color: Ghostwhite;
 }
 
+/* line 45, src/main/frontend/css/style.css */
 .sidebar .powered-by img {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 767px) {
-    .svg .sidebar .powered-by img {
-        position: fixed;
-        display: block;
-        bottom: 10px;
-        width: 120px;
-        left: 15px;
-        margin: 0 auto;
-    }
-}
-
-.sidebar .sidebar-menu .treeview-menu {
+  /* line 50, src/main/frontend/css/style.css */
+  .svg .sidebar .powered-by img {
+    position: fixed;
     display: block;
+    bottom: 10px;
+    width: 120px;
+    left: 15px;
+    margin: 0 auto;
+  }
 }
 
+/* line 60, src/main/frontend/css/style.css */
+.sidebar .sidebar-menu .treeview-menu {
+  display: block;
+}
+
+/* line 64, src/main/frontend/css/style.css */
 .sidebar .sidebar-menu .treeview-menu li {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
+/* line 68, src/main/frontend/css/style.css */
 .skin-black .sidebar > .sidebar-menu > li > .treeview-menu {
-    background: inherit;
+  background: inherit;
 }
 
+/* line 72, src/main/frontend/css/style.css */
 .treeview-menu .active {
-    color: #f6f6f6;
-    background: #444;
+  color: #f6f6f6;
+  background: #444;
 }
 
+/* line 77, src/main/frontend/css/style.css */
 .form-inline .form-control {
-    width: auto;
-    margin-right: .5em;
+  width: auto;
+  margin-right: .5em;
 }
 
+/* line 82, src/main/frontend/css/style.css */
 .form-inline label, .form-inline .form-group, .form-inline label input {
-    margin-right: .5em;
+  margin-right: .5em;
 }
 
+/* line 86, src/main/frontend/css/style.css */
 .form-inline .fa-refresh {
-    display: none;
-    margin-left: 55px;
+  display: none;
+  margin-left: 55px;
 }
 
+/* line 91, src/main/frontend/css/style.css */
 .running-queries td:nth-child(1), .running-queries th:nth-child(1) {
-    width: 20%;
+  width: 20%;
 }
 
+/* line 95, src/main/frontend/css/style.css */
 .running-queries td:nth-child(2), .running-queries th:nth-child(2) {
-    width: 20%;
+  width: 20%;
 }
 
+/* line 99, src/main/frontend/css/style.css */
 .running-queries td:nth-child(3), .running-queries th:nth-child(3) {
-    width: 50%;
+  width: 50%;
 }
 
+/* line 103, src/main/frontend/css/style.css */
 .running-queries td:nth-child(4), .running-queries th:nth-child(4) {
-    width: 10%;
+  width: 10%;
 }
 
+/* line 107, src/main/frontend/css/style.css */
 .content-header .previous {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
+/* line 111, src/main/frontend/css/style.css */
 .content-header .next {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
+/* line 115, src/main/frontend/css/style.css */
 .content-header .edit-buttons {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
+/* line 119, src/main/frontend/css/style.css */
 .stacktrace {
-    max-width: 100%;
+  max-width: 100%;
 }
 
+/* line 123, src/main/frontend/css/style.css */
 .stacktrace pre {
-    word-break: normal;
+  word-break: normal;
 }
 
+/* line 127, src/main/frontend/css/style.css */
 .scrollable {
-    max-height: 400px;
-    overflow-y: auto;
+  max-height: 400px;
+  overflow-y: auto;
 }

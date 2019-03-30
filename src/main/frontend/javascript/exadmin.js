@@ -1,11 +1,3 @@
-/*!
- * monex v0.9.18
- * Monitoring Application for eXist-db
- * (c) 2019 
- * LGPL-2.1-only License
- * git+https://github.com/eXist-db/monex.git
- */
-
 function findByName(nodes, name) {
     if (nodes instanceof Array) {
         for (var i = 0; i < nodes.length; i++) {
@@ -18,7 +10,7 @@ function findByName(nodes, name) {
 }
 
 function addKillBtn(node, data) {
-    $(node).find(".kill-query").click((function(ev) {
+    $(node).find(".kill-query").click(function(ev) {
         ev.preventDefault();
         if (JMX_INSTANCE.version === 0) {
             $.ajax({
@@ -29,7 +21,7 @@ function addKillBtn(node, data) {
         } else {
             JMX.connection.invoke("killQuery", "org.exist.management.exist:type=ProcessReport", [data.id()]);
         }
-    }));
+    });
 }
 
 function uptime(data) {
@@ -182,7 +174,7 @@ JMX.connection = (function() {
         this.elapsed = ko.observable("00:00.000");
         this.time = ko.observable("0");
 
-        this.icon = ko.computed((function() {
+        this.icon = ko.computed(function() {
             switch (this.status()) {
                 case "Checking":
                     return "fa fa-refresh primary";
@@ -191,14 +183,14 @@ JMX.connection = (function() {
                 default:
                     return "fa fa-warning danger";
             }
-        }), this);
+        }, this);
     }
 
     function Instances(instances, schedulerActive) {
         this.instances = ko.observableArray(instances);
         this.status = ko.observable(schedulerActive ? "Checking" : "Stopped");
 
-        this.warnings = ko.computed((function() {
+        this.warnings = ko.computed(function() {
             var fails = 0;
             for (var i = 0; i < this.instances().length; i++) {
                 var status = this.instances()[i].status();
@@ -208,7 +200,7 @@ JMX.connection = (function() {
                 }
             }
             return fails === 0 ? "" : fails;
-        }), this);
+        }, this);
 
         this.schedule = function() {
             var self = this;
@@ -229,7 +221,7 @@ JMX.connection = (function() {
     function connect(channel, callback) {
         if (!Modernizr.websockets) {
             $("#browser-alert").show(400);
-            setTimeout((function() { $("#browser-alert").hide(200); }), 8000);
+            setTimeout(function() { $("#browser-alert").hide(200); }, 8000);
             return;
         }
 
@@ -287,7 +279,7 @@ JMX.connection = (function() {
                 error: function(xhr, status, error) {
                     $("#connection-alert").show(400).find(".message")
                         .text("Operation '" + operation + "' failed or is not supported on this server instance.");
-                    setTimeout((function() { $("#connection-alert").hide(200); }), 3000);
+                    setTimeout(function() { $("#connection-alert").hide(200); }, 3000);
                 }
             });
         },
@@ -346,10 +338,10 @@ JMX.connection = (function() {
                         if (onUpdate) {
                             onUpdate(data);
                         }
-                        setTimeout((function() { JMX.connection.poll(onUpdate); }), pollPeriod);
+                        setTimeout(function() { JMX.connection.poll(onUpdate); }, pollPeriod);
                     } else {
                         $("#connection-alert").show(400).find(".message").text("No response from server. Retrying ...");
-                        setTimeout((function() { JMX.connection.poll(onUpdate); }), 5000);
+                        setTimeout(function() { JMX.connection.poll(onUpdate); }, 5000);
                     }
                 },
                 error: function(xhr, status, error) {
@@ -423,20 +415,20 @@ JMX.connection = (function() {
     };
 }());
 
-$((function() {
+$(function() {
     JMX.connection.init(JMX_INSTANCES, JMX_ACTIVE);
 
-    $("#configure").click((function(ev) {
+    $("#configure").click(function(ev) {
         ev.preventDefault();
         var threshold = $("#threshold").val();
         var historyTimespan = $("#history-timespan").val();
         var trackURI = $("#track-uri").is(":checked");
         JMX.connection.invoke("configure", "org.exist.management.exist:type=ProcessReport", [threshold, historyTimespan, trackURI]);
-    }));
+    });
     // the following block should only be run on the main dashboard page
-    $("#dashboard").each((function() {
+    $("#dashboard").each(function() {
         var charts = [];
-        $(".chart").each((function() {
+        $(".chart").each(function() {
             var node = $(this);
             var labels = node.attr("data-labels");
             var properties = node.attr("data-properties");
@@ -444,7 +436,7 @@ $((function() {
             var max = node.attr("data-max-y");
 
             charts.push(new JMX.TimeSeries(node, labels.split(","), properties.split(","), max, unitY));
-        }));
+        });
         $("#poll-period").ionRangeSlider({
             min: 0.5,
             max: 60.0,
@@ -457,10 +449,10 @@ $((function() {
                 JMX.connection.setPollPeriod(data.from);
             }
         });
-        $("#pause-btn").click((function(ev) {
+        $("#pause-btn").click(function(ev) {
             JMX.connection.togglePolling();
-        }));
-        JMX.connection.poll((function(data) {
+        });
+        JMX.connection.poll(function(data) {
             for (var i = 0; i < charts.length; i++) {
                 charts[i].update(data);
             }
@@ -471,10 +463,10 @@ $((function() {
                 trigger: "focus",
                 template: '<div class="popover stacktrace" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><pre class="popover-content"></pre></div>'
             });
-        }));
-    }));
+        });
+    });
 
     // for (var server in JMX_INSTANCES) {
     //     JMX.connection.ping(JMX_INSTANCES[server]);
     // }
-}));
+});

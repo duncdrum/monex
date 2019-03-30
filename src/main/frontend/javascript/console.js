@@ -1,17 +1,9 @@
-/*!
- * monex v0.9.18
- * Monitoring Application for eXist-db
- * (c) 2019 
- * LGPL-2.1-only License
- * git+https://github.com/eXist-db/monex.git
- */
-
 var RemoteConsole = (function() {
 
     var connection;
     var bufferSize = 50;
     var currentChannel = "default";
-    
+
     return {
         connect: function() {
             var rootcontext = location.pathname.slice(0, location.pathname.indexOf("/apps"));
@@ -50,12 +42,12 @@ var RemoteConsole = (function() {
                 }
 
                 var smallScreen = Modernizr.mq('(max-width: 767px)');
-                
+
                 var time = data.timestamp.replace(/^.*T([^\+]+).*$/, "$1");
                 var tr = document.createElement("tr");
                 tr.style.display = "none";
                 tr.className = "message";
-                
+
                 var td = document.createElement("td");
                 td.className = "hidden-xs";
                 td.appendChild(document.createTextNode(time));
@@ -107,7 +99,7 @@ var RemoteConsole = (function() {
                 var btn = document.createElement("button");
                 btn.type = "button";
                 btn.className = "btn btn-default";
-                
+
                 var info = document.createElement("span");
                 info.className = "fa fa-info";
                 btn.appendChild(info);
@@ -119,12 +111,12 @@ var RemoteConsole = (function() {
                     trigger: "click"
                 });
                 tr.appendChild(td);
-                
+
                 $("#console").append(tr);
 
-                $(tr).show(200, (function() {
+                $(tr).show(200, function() {
                     this.scrollIntoView();
-                }));
+                });
             };
         },
 
@@ -164,24 +156,24 @@ var RemoteConsole = (function() {
     };
 })();
 
-$(document).ready((function() {
+$(document).ready(function() {
 
     RemoteConsole.restoreState();
     RemoteConsole.connect();
 
-    $("#clear").click((function(ev) {
+    $("#clear").click(function(ev) {
         ev.preventDefault();
 
         RemoteConsole.clear();
-    }));
+    });
 
-    $("#set-channel").click((function(ev) {
+    $("#set-channel").click(function(ev) {
         ev.preventDefault();
         var channel = $("input[name='channel']").val();
         RemoteConsole.setChannel(channel);
-    }));
+    });
 
-    $(window).unload((function () {
+    $(window).unload(function () {
         RemoteConsole.saveState();
-    }));
-}));
+    });
+});

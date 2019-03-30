@@ -1,11 +1,3 @@
-/*!
- * monex v0.9.18
- * Monitoring Application for eXist-db
- * (c) 2019 
- * LGPL-2.1-only License
- * git+https://github.com/eXist-db/monex.git
- */
-
 (function($) {
     $.TimerangeSetup = function () { 
 
@@ -69,7 +61,7 @@
                         monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                         firstDay: 1
                     }
-                }, (function(start, end, label) {
+                }, function(start, end, label) {
                     // console.log(start.toISOString(), end.toISOString(), label);
                     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                     var startNew = new Date(start).getTime();
@@ -84,12 +76,12 @@
                     var queryString = {};
                     search.replace(
                         new RegExp("([^?=&amp;]+)(=([^&amp;]*))?", "g"),
-                        (function($0, $1, $2, $3) { queryString[$1] = $3; })
+                        function($0, $1, $2, $3) { queryString[$1] = $3; }
                     );
                     var url = url + "?instance=" + JMX_INSTANCE  + "&start=" + start.toISOString() + "&end=" + end.toISOString();
                     // console.log("url new: ", url)
                     location.href = url;
-                })
+                }
         ); // end $('#reportrange').daterangepicker()              
     };
     

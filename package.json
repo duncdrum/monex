@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/eXist-db/monex#readme",
   "standard": {
-    "globals": [ "$", "JMX" ]
+    "globals": [ "$", "JMX", "ko", "location", "jQuery", "moment", "Node" , "JMX_INSTANCE", "Modernizr", "Constr", "status", "JMX_INSTANCES", "JMX_ACTIVE", "alert", "WebSocket", "localStorage"]
   },
   "dependencies": {
     "admin-lte": "^2.4.10",

@@ -50,10 +50,14 @@
     "bootstrap": "^3.4.1",
     "d3": "^3.5.17",
     "datatables": "^1.10.18",
+    "fastclick": "^1.0.6",
+    "flot": "^3.0.1",
     "fontawesome": "^5.6.3",
     "ionicons": "^4.5.5",
     "jquery": "^1.12.4",
-    "knockout": "^3.5.0"
+    "knockout": "^3.5.0",
+    "knockout-mapping": "^2.6.0",
+    "modernizr": "^3.7.1"
   },
   "devDependencies": {
     "cypress": "^3.2.0",

@@ -144,7 +144,7 @@ JMX.TimeSeries = (function () {
       if (this.unitY === 'mb') {
         val = parseInt(val) / 1024 / 1024
       }
-      this.dataset[i].data.push([now, parseInt(val)])
+      this.dataset[c].data.push([now, parseInt(val)])
     }
 
     $.plot(this.container, this.dataset, options)
@@ -156,8 +156,8 @@ JMX.TimeSeries = (function () {
 JMX.connection = (function () {
   'use strict'
 
+  // Don't seem to be used
   // var JMX_NS = 'http://exist-db.org/jmx'
-
   // var version = 0
 
   var viewModel = null

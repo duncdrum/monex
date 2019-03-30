@@ -9,7 +9,8 @@ var settings = {
   polyfills: false,
   styles: true,
   svgs: true,
-  copy: true
+  copy: true,
+  vendor: true
 }
 
 /**
@@ -35,6 +36,13 @@ var paths = {
   copy: {
     input: 'src/main/frontend/copy/**',
     output: 'src/main/xar-resources/resources/'
+  },
+  vendor: {
+    input: 'node_modules/',
+    output: 'src/main/xar-resources/resources/'
+  },
+  fonts: {
+    output: 'src/main/xar-resources/resources/fonts/',
   }
 }
 
@@ -43,21 +51,19 @@ var paths = {
  */
 
 var banner = {
-  full:
-		'/*!\n' +
-		' * <%= package.name %> v<%= package.version %>\n' +
-		' * <%= package.description %>\n' +
-		' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
-		' * <%= package.license %> License\n' +
-		' * <%= package.repository.url %>\n' +
-		' */\n\n',
-  min:
-		'/*!' +
-		' <%= package.name %> v<%= package.version %>' +
-		' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
-		' | <%= package.license %> License' +
-		' | <%= package.repository.url %>' +
-		' */\n'
+  full: '/*!\n' +
+    ' * <%= package.name %> v<%= package.version %>\n' +
+    ' * <%= package.description %>\n' +
+    ' * (c) ' + new Date().getFullYear() + ' <%= package.author.name %>\n' +
+    ' * <%= package.license %> License\n' +
+    ' * <%= package.repository.url %>\n' +
+    ' */\n\n',
+  min: '/*!' +
+    ' <%= package.name %> v<%= package.version %>' +
+    ' | (c) ' + new Date().getFullYear() + ' <%= package.author.name %>' +
+    ' | <%= package.license %> License' +
+    ' | <%= package.repository.url %>' +
+    ' */\n'
 }
 
 /**
@@ -65,7 +71,13 @@ var banner = {
  */
 
 // General
-var { gulp, src, dest, series, parallel } = require('gulp')
+var {
+  gulp,
+  src,
+  dest,
+  series,
+  parallel
+} = require('gulp')
 var del = require('del')
 var flatmap = require('gulp-flatmap')
 var lazypipe = require('lazypipe')
@@ -92,7 +104,7 @@ var svgmin = require('gulp-svgmin')
  */
 
 // Remove pre-existing content from output folders
-var cleanDist = function (done) {
+var cleanDist = function(done) {
   // Make sure this feature is activated before running
   if (!settings.clean) return done()
 
@@ -107,23 +119,29 @@ var cleanDist = function (done) {
 
 // Repeated JavaScript tasks
 var jsTasks = lazypipe()
-  .pipe(header, banner.full, { package: pkg })
+  .pipe(header, banner.full, {
+    package: pkg
+  })
   .pipe(optimizejs)
   .pipe(dest, paths.scripts.output)
-  .pipe(rename, { suffix: '.min' })
+  .pipe(rename, {
+    suffix: '.min'
+  })
   .pipe(uglify)
   .pipe(optimizejs)
-  .pipe(header, banner.min, { package: pkg })
+  .pipe(header, banner.min, {
+    package: pkg
+  })
   .pipe(dest, paths.scripts.output)
 
 // Lint, minify, and concatenate scripts
-var buildScripts = function (done) {
+var buildScripts = function(done) {
   // Make sure this feature is activated before running
   if (!settings.scripts) return done()
 
   // Run tasks on script files
   src(paths.scripts.input)
-    .pipe(flatmap(function (stream, file) {
+    .pipe(flatmap(function(stream, file) {
       // If the file is a directory
       if (file.isDirectory()) {
         // Setup a suffix variable
@@ -158,13 +176,15 @@ var buildScripts = function (done) {
 }
 
 // Lint scripts
-var lintScripts = function (done) {
+var lintScripts = function(done) {
   // Make sure this feature is activated before running
   if (!settings.scripts) return done()
 
   // Lint scripts
   src(paths.scripts.input)
-    .pipe(standard({ fix: true }))
+    .pipe(standard({
+      fix: true
+    }))
     .pipe(standard.reporter('default'))
 
   // Signal completion
@@ -172,7 +192,7 @@ var lintScripts = function (done) {
 }
 
 // Process, lint, and minify Sass files
-var buildStyles = function (done) {
+var buildStyles = function(done) {
   // Make sure this feature is activated before running
   if (!settings.styles) return done()
 
@@ -187,15 +207,21 @@ var buildStyles = function (done) {
       cascade: true,
       remove: true
     }))
-    .pipe(header(banner.full, { package: pkg }))
+    .pipe(header(banner.full, {
+      package: pkg
+    }))
     .pipe(dest(paths.styles.output))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(minify({
       discardComments: {
         removeAll: true
       }
     }))
-    .pipe(header(banner.min, { package: pkg }))
+    .pipe(header(banner.min, {
+      package: pkg
+    }))
     .pipe(dest(paths.styles.output))
 
   // Signal completion
@@ -203,7 +229,7 @@ var buildStyles = function (done) {
 }
 
 // Optimize SVG files
-var buildSVGs = function (done) {
+var buildSVGs = function(done) {
   // Make sure this feature is activated before running
   if (!settings.svgs) return done()
 
@@ -216,8 +242,34 @@ var buildSVGs = function (done) {
   done()
 }
 
+// Copy third-party dependencies from node_modules into resources
+var vendorFiles = function(done) {
+  // Make sure this feature is activated before running
+  if (!settings.vendor) return done()
+
+  // TODO ensure each declared third-parrty dep has a corresponding command below
+  // TODO modernizr@2 needs refactor via npm or gulp-modernizr
+  var deps = pkg.dependencies.length
+
+
+  // copy vendor scripts
+  src(['node_modules/admin-lte/dist/js/*.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js*', 'node_modules/d3/*.min.js', 'node_modules/datatables.net-bs/js/*.min.js', 'node_modules/fastclick/lib/*.js', 'node_modules/flot/dist/es5/.js*', 'node_modules/ion-rangeslider/js/*.min.js', 'node_modules/jquery/dist/**', 'node_modules/knockout/output/*-latest.js', 'node_modules/knockout-mapping/dist/*.min.js*'])
+  .pipe(dest(paths.scripts.output))
+
+  // copy vendor Styles
+  src(['node_modules/admin-lte/dist/css/*min.css*', 'node_modules/bootstrap/dist/css/bootstrap.min.css*', 'node_modules/datatables.net-bs/css/*.min.css', 'node_modules/font-awesome/css/*.min.css*', 'node_modules/ionicons/dist/css/*.min.css*', 'node_modules/ion-rangeslider/css/*.min.css'])
+    .pipe(dest(paths.styles.output))
+
+  // copy vendor fonts
+  src(['node_modules/bootstrap/fonts/**', 'node_modules/font-awesome/fonts/**', 'node_modules/ionicons/dist/fonts/**'])
+    .pipe(dest(paths.fonts.output))
+  // Signal completion
+  done()
+}
+
+
 // Copy static files into output folder
-var copyFiles = function (done) {
+var copyFiles = function(done) {
   // Make sure this feature is activated before running
   if (!settings.copy) return done()
 
@@ -237,6 +289,7 @@ var copyFiles = function (done) {
 // gulp
 exports.default = series(
   cleanDist,
+  vendorFiles,
   parallel(
     buildScripts,
     lintScripts,

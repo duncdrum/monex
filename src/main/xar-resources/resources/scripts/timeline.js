@@ -79,6 +79,7 @@
       plot.draw()
     }))
     container.bind('plothover', (function (event, pos, item) {
+      // DP: str does not seem to be in use
       // var str = '(' + pos.x.toFixed(2) + ', ' + pos.y.toFixed(2) + ')'
       // console.log("str: ", str);
 
@@ -107,6 +108,7 @@
       // axis coordinates for other axes, if present, are in pos.x2, pos.x3, ...
       // if you need global screen coordinates, they are pos.pageX, pos.pageY
       if (item) {
+        // DP: millis does not seem to be in use
         // var millis = new Date(item.datapoint[0])
         // console.log(millis.toISOString());
         window.open('details.html?timestamp=' + item.datapoint[0] + '&instance=' + JMX_INSTANCE, '_blank')

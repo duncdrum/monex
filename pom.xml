@@ -184,10 +184,10 @@
             <id>gulp build</id>
             <goals>
               <goal>gulp</goal>
-            </goals>            
+            </goals>
           </execution>
           <execution>
-            <id>moacha tests</id>
+            <id>mocha tests</id>
             <goals>
               <goal>npm</goal>
             </goals>

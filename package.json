@@ -1,9 +1,9 @@
 {
   "name": "monex",
-  "version": "0.9.18",
+  "version": "0.9.18-SNAPSHOT",
   "description": "Monitoring Application for eXist-db",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/test/mocha/ --recursive --exit"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,26 @@
   },
   "homepage": "https://github.com/eXist-db/monex#readme",
   "standard": {
-    "globals": [ "$", "JMX", "ko", "location", "jQuery", "moment", "Node" , "JMX_INSTANCE", "Modernizr", "Constr", "status", "JMX_INSTANCES", "JMX_ACTIVE", "alert", "WebSocket", "localStorage"]
+    "globals": [
+      "$",
+      "JMX",
+      "ko",
+      "location",
+      "jQuery",
+      "moment",
+      "Node",
+      "JMX_INSTANCE",
+      "Modernizr",
+      "Constr",
+      "status",
+      "JMX_INSTANCES",
+      "JMX_ACTIVE",
+      "alert",
+      "WebSocket",
+      "localStorage",
+      "describe",
+      "it"
+    ]
   },
   "dependencies": {
     "admin-lte": "^2.4.10",

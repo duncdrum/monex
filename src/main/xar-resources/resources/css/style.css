@@ -1,5 +1,5 @@
 /*!
- * monex v0.9.18
+ * monex v0.9.18-SNAPSHOT
  * Monitoring Application for eXist-db
  * (c) 2019 
  * LGPL-2.1-only License

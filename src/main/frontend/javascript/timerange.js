@@ -63,6 +63,7 @@
     }, function(start, end, label) {
       // console.log(start.toISOString(), end.toISOString(), label);
       $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      // DP: startNew and endNew do not seem to be in use
       // var startNew = new Date(start).getTime()
       // var endNew = new Date(end).getTime()
       // console.log("startNew:", startNew, " endNew: ", endNew);

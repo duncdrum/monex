@@ -39,7 +39,7 @@ var RemoteConsole = (function () {
         if (oldLines.length >= bufferSize) {
           oldLines.get(0).remove()
         }
-
+        //  DP: Does not seem to be in use
         // var smallScreen = Modernizr.mq('(max-width: 767px)')
 
         var time = data.timestamp.replace(/^.*T([^+]+).*$/, '$1')

@@ -30,7 +30,7 @@ var paths = {
   },
   svgs: {
     input: 'src/main/frontend/img/*.svg',
-    output: 'src/main/xar-resources/resources/images/'
+    output: 'src/main/xar-resources/resources/img/'
   },
   copy: {
     input: 'src/main/frontend/copy/**',

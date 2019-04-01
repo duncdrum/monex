@@ -121,14 +121,14 @@
         </div><!-- /.row -->
     </section>
     <script type="text/javascript" src="resources/scripts/modernizr.custom.js"/>
-    <script type="text/javascript" src="resources/scripts/knockout-3.1.0.js"/>
-    <script type="text/javascript" src="resources/scripts/knockout.mapping-2.4.1.js"/>
+    <script type="text/javascript" src="resources/scripts/knockout-latest.js"/>
+    <script type="text/javascript" src="resources/scripts/knockout.mapping.min.js"/>
     <script type="text/javascript" src="resources/scripts/jquery.flot.min.js"/>
     <script type="text/javascript" src="resources/scripts/jquery.flot.time.min.js"/>
     <script type="text/javascript" src="resources/scripts/jquery.flot.selection.min.js"/>
     <script type="text/javascript" src="resources/scripts/jquery.flot.tooltip.min.js"/>
-    <script type="text/javascript" src="resources/scripts/timerange.js"/>
-    <script type="text/javascript" src="resources/scripts/timeline.js"/>
+    <script type="text/javascript" src="resources/scripts/timerange.min.js"/>
+    <script type="text/javascript" src="resources/scripts/timeline.min.js"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/2.9.0/moment.min.js"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker.js"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/1/daterangepicker-bs3.css"/>
@@ -152,7 +152,7 @@
             var options = $.TimelineOptions();
 
             $( ".default-chart" ).each(function( index ) {
-                var id = $( this ).attr("id") 
+                var id = $( this ).attr("id")
                 // console.log( index + ": " + id);
                 var url = "modules/update-timeline.xql" + $(location).attr('search') + "&amp;id=" + id;
                 var task = function () {

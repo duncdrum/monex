@@ -93,8 +93,8 @@
                     <tr>
                         <td>token</td>
                         <td>the unique JMX token required to connect to the JMX servlet. This token is generated
-                            for every server and can be found in the file <code>jmxservlet.token</code> 
-                            inside the data directory of the eXist instance. Note: eXist versions before 2.2 
+                            for every server and can be found in the file <code>jmxservlet.token</code>
+                            inside the data directory of the eXist instance. Note: eXist versions before 2.2
                             do not use this mechanism, so no token is required.</td>
                     </tr>
                     <tr>
@@ -111,7 +111,7 @@
                         alert against the data returned. Optionally the polled JMX data is stored and can
                         be analysed over time.</li>
                 </ol>
-                <p>The frequency of both types of checks is configured via a cron expression. The 
+                <p>The frequency of both types of checks is configured via a cron expression. The
                     responsiveness check is always done, even if no alerts are defined. Its interval
                     is configured by the cron expression given in the &lt;instance&gt; element.</p>
                 <p>Alerts are processed in a separate request, whose frequency is determined by the
@@ -123,17 +123,17 @@
                     document is referenced by variable <code>$jmx</code>
                     </li>
                     <li>if the effective binary value of the evaluated XPath expression is true, the alert
-                        fires and a notification is sent to registered users. The JMX output will be 
+                        fires and a notification is sent to registered users. The JMX output will be
                         attached to the email for analysis by the administrator.</li>
                 </ol>
             </div>
         </div>
     </section>
     <script type="text/javascript" src="resources/scripts/modernizr.custom.js"/>
-    <script type="text/javascript" src="resources/scripts/knockout-3.1.0.js"/>
-    <script type="text/javascript" src="resources/scripts/knockout.mapping-2.4.1.js"/>
-    <script type="text/javascript" src="resources/scripts/util.js"/>
-    <script type="text/javascript" src="resources/scripts/exadmin.js"/>
+    <script type="text/javascript" src="resources/scripts/knockout-latest.js"/>
+    <script type="text/javascript" src="resources/scripts/knockout.mapping.min.js"/>
+    <script type="text/javascript" src="resources/scripts/util.min.js"/>
+    <script type="text/javascript" src="resources/scripts/exadmin.min.js"/>
     <script type="text/javascript" src="$shared/resources/scripts/ace/ace.js"/>
     <script type="text/javascript" src="$shared/resources/scripts/ace/mode-text.js"/>
     <script type="text/javascript" src="$shared/resources/scripts/ace/mode-xml.js"/>

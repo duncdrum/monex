@@ -65,7 +65,9 @@
     <project.build.source>1.8</project.build.source>
     <project.build.target>1.8</project.build.target>
 
-    <exist.version>5.0.0-SNAPSHOT</exist.version>
+    <exist.version>5.0.0-RC6</exist.version>
+    <min.version>4.99.0</min.version>
+    <max.version>5.99.0</max.version>
 
     <!-- used in the EXPath Package Descriptor -->
     <package-name>http://exist-db.org/apps/monex</package-name>

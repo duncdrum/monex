@@ -7,48 +7,43 @@
  */
 
 /* Application styles could go here */
-/* line 2, src/main/frontend/css/style.css */
+/* line 3, src/main/frontend/css/style.scss */
 .profiling .nav {
   margin-top: 10px;
 }
 
-/* line 6, src/main/frontend/css/style.css */
+/* line 7, src/main/frontend/css/style.scss */
 body > .header .logo {
   /* background-color: #FFFFFF; */
   text-align: left;
 }
 
-/* line 11, src/main/frontend/css/style.css */
-#console tr > td:nth-child(1) {
+/* line 15, src/main/frontend/css/style.scss */
+#console tr > td:nth-child(1), #console tr > td:nth-child(2), #console tr > td:nth-child(3) {
   width: 10%;
 }
 
-/* line 15, src/main/frontend/css/style.css */
-#console tr > td:nth-child(2) {
-  width: 10%;
-}
-
-/* line 19, src/main/frontend/css/style.css */
-#console tr > td:nth-child(3) {
-  width: 10%;
-}
-
-/* line 23, src/main/frontend/css/style.css */
-#console tr > td:nth-child(4), #console tr > th:nth-child(4) {
+/* line 18, src/main/frontend/css/style.scss */
+#console tr > td:nth-child(4) {
   width: 65%;
 }
 
-/* line 27, src/main/frontend/css/style.css */
+/* line 22, src/main/frontend/css/style.scss */
+#console tr > th:nth-child(4) {
+  width: 65%;
+}
+
+/* line 25, src/main/frontend/css/style.scss */
 #console tr > td:nth-child(5), #console tr > th:nth-child(5) {
   width: 5%;
 }
 
-/* line 31, src/main/frontend/css/style.css */
+/* line 29, src/main/frontend/css/style.scss */
 #console .source {
   cursor: pointer;
 }
 
-/* line 35, src/main/frontend/css/style.css */
+/* line 34, src/main/frontend/css/style.scss */
 #visualizer .node {
   border: solid 1px Ghostwhite;
   font: 10px;
@@ -59,13 +54,23 @@ body > .header .logo {
   color: Ghostwhite;
 }
 
-/* line 45, src/main/frontend/css/style.css */
+/* line 45, src/main/frontend/css/style.scss */
 .sidebar .powered-by img {
   display: none;
 }
 
+/* line 48, src/main/frontend/css/style.scss */
+.sidebar .sidebar-menu .treeview-menu {
+  display: block;
+}
+
+/* line 50, src/main/frontend/css/style.scss */
+.sidebar .sidebar-menu .treeview-menu li {
+  padding-left: 10px;
+}
+
 @media (min-width: 767px) {
-  /* line 50, src/main/frontend/css/style.css */
+  /* line 57, src/main/frontend/css/style.scss */
   .svg .sidebar .powered-by img {
     position: fixed;
     display: block;
@@ -76,90 +81,75 @@ body > .header .logo {
   }
 }
 
-/* line 60, src/main/frontend/css/style.css */
-.sidebar .sidebar-menu .treeview-menu {
-  display: block;
-}
-
-/* line 64, src/main/frontend/css/style.css */
-.sidebar .sidebar-menu .treeview-menu li {
-  padding-left: 10px;
-}
-
-/* line 68, src/main/frontend/css/style.css */
+/* line 67, src/main/frontend/css/style.scss */
 .skin-black .sidebar > .sidebar-menu > li > .treeview-menu {
   background: inherit;
 }
 
-/* line 72, src/main/frontend/css/style.css */
+/* line 71, src/main/frontend/css/style.scss */
 .treeview-menu .active {
   color: #f6f6f6;
   background: #444;
 }
 
-/* line 77, src/main/frontend/css/style.css */
+/* line 77, src/main/frontend/css/style.scss */
 .form-inline .form-control {
   width: auto;
   margin-right: .5em;
 }
 
-/* line 82, src/main/frontend/css/style.css */
+/* line 81, src/main/frontend/css/style.scss */
 .form-inline label, .form-inline .form-group, .form-inline label input {
   margin-right: .5em;
 }
 
-/* line 86, src/main/frontend/css/style.css */
+/* line 84, src/main/frontend/css/style.scss */
 .form-inline .fa-refresh {
   display: none;
   margin-left: 55px;
 }
 
-/* line 91, src/main/frontend/css/style.css */
-.running-queries td:nth-child(1), .running-queries th:nth-child(1) {
+/* line 91, src/main/frontend/css/style.scss */
+.running-queries td:nth-child(1), .running-queries th:nth-child(1), .running-queries td:nth-child(2), .running-queries th:nth-child(2) {
   width: 20%;
 }
 
-/* line 95, src/main/frontend/css/style.css */
-.running-queries td:nth-child(2), .running-queries th:nth-child(2) {
-  width: 20%;
-}
-
-/* line 99, src/main/frontend/css/style.css */
+/* line 94, src/main/frontend/css/style.scss */
 .running-queries td:nth-child(3), .running-queries th:nth-child(3) {
   width: 50%;
 }
 
-/* line 103, src/main/frontend/css/style.css */
+/* line 97, src/main/frontend/css/style.scss */
 .running-queries td:nth-child(4), .running-queries th:nth-child(4) {
   width: 10%;
 }
 
-/* line 107, src/main/frontend/css/style.css */
+/* line 103, src/main/frontend/css/style.scss */
 .content-header .previous {
   margin-right: 10px;
 }
 
-/* line 111, src/main/frontend/css/style.css */
+/* line 106, src/main/frontend/css/style.scss */
 .content-header .next {
   margin-left: 10px;
 }
 
-/* line 115, src/main/frontend/css/style.css */
+/* line 109, src/main/frontend/css/style.scss */
 .content-header .edit-buttons {
   margin-right: 8px;
 }
 
-/* line 119, src/main/frontend/css/style.css */
+/* line 114, src/main/frontend/css/style.scss */
 .stacktrace {
   max-width: 100%;
 }
 
-/* line 123, src/main/frontend/css/style.css */
+/* line 116, src/main/frontend/css/style.scss */
 .stacktrace pre {
   word-break: normal;
 }
 
-/* line 127, src/main/frontend/css/style.css */
+/* line 121, src/main/frontend/css/style.scss */
 .scrollable {
   max-height: 400px;
   overflow-y: auto;

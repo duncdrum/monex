@@ -26,7 +26,7 @@ var paths = {
     output: 'src/main/xar-resources/resources/scripts/'
   },
   styles: {
-    input: 'src/main/frontend/css/**',
+    input: 'src/main/frontend/css/*.{scss,sass}',
     output: 'src/main/xar-resources/resources/css/'
   },
   svgs: {
@@ -253,7 +253,7 @@ var vendorFiles = function(done) {
 
 
   // copy vendor scripts
-  src(['node_modules/admin-lte/dist/js/*.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js*', 'node_modules/d3/*.min.js', 'node_modules/datatables.net-bs/js/*.min.js', 'node_modules/fastclick/lib/*.js', 'node_modules/flot/dist/es5/.js*', 'node_modules/ion-rangeslider/js/*.min.js', 'node_modules/jquery/dist/**', 'node_modules/knockout/build/output/*latest.js', 'node_modules/knockout-mapping/dist/*.min.js*'])
+  src(['node_modules/admin-lte/dist/js/*.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js*', 'node_modules/d3/*.min.js', 'node_modules/datatables.net-bs/js/*.min.js', 'node_modules/flot/dist/es5/.js*', 'node_modules/fastclick/lib/*.js', 'node_modules/ion-rangeslider/js/*.min.js', 'node_modules/jquery/dist/**', 'node_modules/knockout/build/output/*latest.js', 'node_modules/knockout-mapping/dist/*.min.js*'])
   .pipe(dest(paths.scripts.output))
 
   // copy vendor Styles
